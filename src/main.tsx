@@ -11,6 +11,6 @@ createRoot(document.getElementById("root")!).render(
 
 if ("serviceWorker" in navigator && !location.hostname.includes("localhost")) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/sw.js").catch(() => {});
+    navigator.serviceWorker.register("./sw.js").catch(() => {});
   });
 }
