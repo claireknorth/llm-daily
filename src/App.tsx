@@ -188,7 +188,7 @@ function Home({
         </button>
       ) : (
         <div className="card done-card">
-          <p className="cta-title">All 24 lessons complete 🏆</p>
+          <p className="cta-title">All {TOTAL_LESSONS} lessons complete 🏆</p>
           <p className="muted">Keep your streak with daily flashcard reviews.</p>
         </div>
       )}

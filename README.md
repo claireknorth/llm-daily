@@ -6,9 +6,9 @@ fluency.
 
 ## What's inside
 
-- **6 units, 24 lessons, 96 concept cards** — every concept explained with a
+- **6 units, 27 lessons, 108 concept cards** — every concept explained with a
   hook, an analogy, a real-world example, and a PM angle
-- **72 quiz questions** with explanations
+- **81 quiz questions** with explanations
 - **Spaced-repetition flashcards** (Leitner boxes) — completed lesson cards
   come back for review right when you're about to forget them
 - **Gamification** — XP, daily goal, streaks, 8 levels from 🐣 Curious Human
@@ -45,4 +45,6 @@ To try it on your phone before deploying: run `npm run dev`, and open the
 3. 🛠️ **AI Engineering Toolkit** — prompting, RAG, evals, cost/speed/quality
 4. 🤖 **Agents & Agentic AI** — the agent loop, tools, MCP, guardrails
 5. 🚀 **Building AI Products** — anatomy of AI products, building bots, metrics, safety
-6. 🏆 **The AI PM Playbook** — talking like an AI PM, the industry landscape, product sense with AI
+6. 🏆 **The AI PM Playbook** — talking like an AI PM, the industry landscape, product
+   sense, ML fundamentals (NN vs LLM, classic ML, rules-vs-ML-vs-LLM), model selection,
+   prompt evaluation, RAG internals, RLHF vs DPO, and staying current

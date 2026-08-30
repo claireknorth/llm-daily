@@ -1004,6 +1004,252 @@ export const units46: Unit[] = [
           },
         ],
       },
+      {
+        id: "u6l5",
+        title: "ML fundamentals, demystified",
+        emoji: "🧬",
+        cards: [
+          {
+            title: "What IS Generative AI?",
+            emoji: "🎨",
+            hook: "AI comes in two big flavors. Predictive (discriminative) models answer 'which one?' — is this email spam, will this customer churn, what's the fraud score. Generative AI CREATES new content — text, images, audio, code — by learning the deep patterns of its training data and sampling something new from them. LLMs, image diffusion models, and voice models are all generative.",
+            analogy:
+              "An art critic vs. an artist. The critic judges what exists ('this is a Monet, 87% sure'); the artist produces a painting that never existed before.",
+            example:
+              "A fraud model outputs a score between 0 and 1 (predictive). ChatGPT writes a brand-new apology email (generative). Midjourney paints an image from a sentence (generative).",
+            pm: "A crisp definition to reuse: 'Predictive AI classifies or ranks what exists; generative AI produces new content.' The risk profiles differ too — misclassification vs. hallucinated content.",
+          },
+          {
+            title: "Neural networks vs. LLMs",
+            emoji: "🕸️",
+            hook: "A neural network is the broad technique: layers of simple math units ('neurons') connected by weights, which learn patterns from data by adjusting those weights during training. NNs power vision, speech, fraud detection, recommendations. An LLM is one specific, enormous KIND of neural network — the transformer architecture (introduced in the 2017 paper 'Attention Is All You Need') — trained on massive text to predict the next token. Every LLM is a neural network; almost no neural networks are LLMs.",
+            analogy:
+              "Vehicle vs. cruise ship. An LLM is a neural network the way a cruise ship is a vehicle — same family, radically different scale and specialization.",
+            example:
+              "Spotify's recommendation network has millions of parameters and outputs a ranking score. A frontier LLM has hundreds of billions of parameters and outputs language, code, and reasoning.",
+            pm: "The transformer's key trick is 'attention': for every new token, the model weighs which earlier words matter most. Attention + massive scale is what unlocked modern generative AI.",
+          },
+          {
+            title: "Classic ML: old but gold",
+            emoji: "🥇",
+            hook: "Before LLMs, 'classic ML' — logistic regression, decision trees, gradient-boosted trees (XGBoost) — ran the world. It still does. Strengths: cheap, millisecond-fast, consistent (same input → same output), explainable to regulators, and excellent on structured/tabular data. Weaknesses: needs labeled training data and hand-built features, can't read open-ended language, and can't generate anything.",
+            analogy:
+              "A calculator vs. a consultant. The calculator is instant, nearly free, and always right within its narrow job — but it will never draft your strategy memo.",
+            example:
+              "Credit scoring, fraud detection, search ranking, ETA prediction, churn models — nearly all still classic ML, because it's fast, cheap, and auditable at massive scale.",
+            pm: "Product implications: classic ML wins when data is structured, latency and cost budgets are tight, or regulators demand explainability. Don't use an LLM where a decision tree will do.",
+          },
+          {
+            title: "Rules vs. ML vs. LLM: the ladder",
+            emoji: "🪜",
+            hook: "An escalation ladder. (1) Rule-based logic — deterministic if-then code — when the logic is simple, must be 100% predictable, or is legally mandated. (2) Classic ML / small NNs — when you have labeled data and structured inputs and need pattern recognition at scale. (3) LLMs — when inputs are unstructured language, outputs are generated content, or requirements shift too fast to retrain a model. Start at the bottom; climb only when the job demands it.",
+            analogy:
+              "Hiring: a checklist (rules), an analyst (ML), or a versatile generalist (LLM). You pay generalist rates only when the job truly needs judgment with words.",
+            example:
+              "'Block transactions over $10K from accounts under 30 days old' = rule. 'Score fraud probability from 200 signals' = classic ML. 'Read this dispute email and draft a response' = LLM.",
+            pm: "Real systems mix all three: rules for compliance gates, ML for scoring, LLMs for language. The naive answer is 'LLM everything.' The senior answer is this ladder — cheapest reliable tool wins.",
+          },
+        ],
+        quiz: [
+          {
+            q: "The relationship between neural networks and LLMs is...",
+            choices: [
+              "They're competing technologies — you pick one or the other",
+              "LLMs are one specialized, giant type of neural network (a transformer trained on text)",
+              "Neural networks are newer than LLMs",
+            ],
+            answer: 1,
+            explain:
+              "NN is the genus, LLM is one species: a transformer-architecture network trained on massive text for next-token prediction.",
+          },
+          {
+            q: "Which task is classic ML (not an LLM) still the best fit for?",
+            choices: [
+              "Scoring fraud probability from 200 structured transaction signals",
+              "Drafting a personalized apology email",
+              "Summarizing a 40-page contract",
+            ],
+            answer: 0,
+            explain:
+              "Structured data + tight latency + auditability = classic ML territory. Language in, content out = LLM territory.",
+          },
+          {
+            q: "'Block all transactions over $10K from accounts under 30 days old.' Best tool?",
+            choices: [
+              "A rule — deterministic, auditable, three lines of code",
+              "A fine-tuned LLM",
+              "A multi-agent system",
+            ],
+            answer: 0,
+            explain:
+              "Simple, legally-sensitive logic should be 100% predictable. Rules first; climb the ladder only when rules can't express the job.",
+          },
+        ],
+      },
+      {
+        id: "u6l6",
+        title: "Deep answers: models & prompts",
+        emoji: "🎓",
+        cards: [
+          {
+            title: "Choosing a model: real criteria",
+            emoji: "🧮",
+            hook: "Six filters. (1) Capability — can it do the task at all (reasoning depth, modalities, tool use)? (2) Quality on YOUR evals — run a bake-off on your own test set; public leaderboards don't reflect your data. (3) Latency — user-facing chat needs a fast first token; overnight batch jobs don't care. (4) Cost per task at projected volume — note output tokens usually cost several times more than input. (5) Context window and features — fits your documents? Supports structured output and tool calling? (6) Trust — data-privacy terms, compliance certifications, provider reliability, deprecation policy.",
+            analogy:
+              "Hiring: the résumé (benchmarks) earns an interview; the work-sample test (your evals) decides the offer.",
+            example:
+              "A real bake-off: run 300 actual support tickets through three candidate models, score with a rubric, and compare quality, latency, and cost per ticket side by side. The decision usually falls out of the spreadsheet.",
+            pm: "Never 'I'd pick the best model.' Instead: 'Shortlist by constraints, bake-off on our eval set, choose per use case — possibly routing between a cheap model and a frontier model.'",
+          },
+          {
+            title: "Evaluating a prompt properly",
+            emoji: "🔬",
+            hook: "Treat prompts like code. (1) Build a test set: 50–500 real, representative inputs including edge cases — typos, hostile users, off-topic asks. (2) Define a rubric: correctness, completeness, format compliance, tone, safety. (3) Score every output: exact-match checks where possible, LLM-as-judge for subjective dimensions, humans spot-checking the judge. (4) Compare variants side by side and watch for regressions — a tweak that fixes one case often silently breaks three others. (5) Version-control prompts and re-run the suite on every change.",
+            analogy:
+              "A/B testing ad copy — except your 'audience' is an eval suite you can re-run in minutes for pennies.",
+            example:
+              "Changing 'be concise' to 'answer in under 60 words' looks trivial. The eval run shows format compliance jumping from 71% to 96% with no accuracy drop. Now it's a shippable fact, not a hunch.",
+            pm: "The line to remember: 'A prompt change without an eval run is a vibe, not an improvement.'",
+          },
+          {
+            title: "RAG, one level deeper",
+            emoji: "🔎",
+            hook: "The RAG pipeline has stages, and each can fail. (1) Chunking: split documents into pieces — too big means noisy retrieval, too small loses context. (2) Embedding + vector store: chunks become meaning-vectors for semantic search. (3) Retrieval: fetch the top-k most similar chunks — production systems often add keyword search ('hybrid retrieval') plus a reranker model to reorder results by true relevance. (4) Generation: the model answers ONLY from the retrieved text, ideally with citations. Most 'RAG is broken' complaints trace to retrieval, not the model.",
+            analogy:
+              "A law firm: the paralegal pulls case files (retrieval), the associate picks the truly relevant ones (reranking), the partner writes the argument (generation). A weak paralegal sinks the case no matter how brilliant the partner.",
+            example:
+              "Debugging discipline: when the answer is wrong, FIRST inspect what was retrieved. If the right chunk never surfaced, fix chunking or search — don't touch the prompt.",
+            pm: "Know the alternative too: giant context windows let you paste everything for small document sets — but cost, latency, and 'lost in the middle' attention problems keep RAG the standard at scale.",
+          },
+          {
+            title: "RLHF vs. DPO",
+            emoji: "🎚️",
+            hook: "Both teach models human preferences — by different routes. RLHF (behind ChatGPT's 2022 breakthrough): collect human rankings of answers → train a separate 'reward model' to predict those rankings → run reinforcement learning (an algorithm called PPO) to optimize the LLM against that reward model. Powerful, but complex, unstable, and compute-hungry. DPO — Direct Preference Optimization (Stanford, 2023) — skips the reward model and the RL loop entirely: it adjusts the model directly on preference pairs ('answer A beat answer B') using a simple training objective. Simpler, cheaper, more stable — now standard across open-source models.",
+            analogy:
+              "RLHF trains a food critic first, then makes the chef cook to satisfy the critic. DPO hands the chef the diners' side-by-side verdicts directly.",
+            example:
+              "Open-model teams largely moved from RLHF-style pipelines to DPO variants because a small team can actually afford to run DPO.",
+            pm: "The one-liner: 'Same goal — align the model to human preferences. DPO removed the scaffolding, which democratized alignment tuning.'",
+          },
+        ],
+        quiz: [
+          {
+            q: "The right way to choose a model for your product?",
+            choices: [
+              "Pick whatever tops the public leaderboard",
+              "Shortlist by constraints, then bake-off the candidates on your own eval set",
+              "Always pick the cheapest and hope",
+            ],
+            answer: 1,
+            explain:
+              "Leaderboards are the résumé; your eval set is the work-sample test. Capability, quality-on-your-data, latency, cost, context, trust.",
+          },
+          {
+            q: "DPO's key simplification versus RLHF is...",
+            choices: [
+              "It removes the separate reward model and RL loop, learning directly from preference pairs",
+              "It uses no human data at all",
+              "It only works for images",
+            ],
+            answer: 0,
+            explain:
+              "RLHF: preferences → reward model → PPO reinforcement learning. DPO: preferences → direct optimization. Same goal, far less machinery.",
+          },
+          {
+            q: "Your RAG bot answered wrong. First debugging step?",
+            choices: [
+              "Rewrite the system prompt immediately",
+              "Inspect what chunks were retrieved — retrieval fails more often than generation",
+              "Switch to a bigger model",
+            ],
+            answer: 1,
+            explain:
+              "If the right passage never reached the model, no prompt or model upgrade can save the answer. Debug retrieval first.",
+          },
+        ],
+      },
+      {
+        id: "u6l7",
+        title: "Staying current",
+        emoji: "📡",
+        cards: [
+          {
+            title: "Go to the source",
+            emoji: "📜",
+            hook: "The highest-signal information comes from the labs themselves. OpenAI, Anthropic, Google DeepMind, Meta AI, and xAI publish blogs, model cards, and system cards with every release — documenting capabilities, benchmark results, pricing, and known weaknesses. Fifteen minutes with a model card beats an hour of hot takes.",
+            analogy:
+              "Reading the actual earnings report instead of a tweet about the earnings report.",
+            example:
+              "Anthropic's model cards spell out benchmark scores AND the model's known failure modes — exactly the trade-off data a PM needs for a build decision.",
+            pm: "When a model launches, skim three things: what's new, what it costs, and what the provider admits it's still bad at. That's your product brief.",
+          },
+          {
+            title: "Curate a lean feed",
+            emoji: "🗞️",
+            hook: "You need 3–5 recurring sources, not 50 tabs. A daily-ish newsletter for breadth (Ben's Bites, The Rundown, TLDR AI), one practitioner source for depth (the Latent Space podcast), one strategy lens (Stratechery, or Ethan Mollick's 'One Useful Thing'), plus a handful of researchers and builders you follow directly. Skip the pure-hype and pure-doom accounts — both are noise.",
+            analogy:
+              "A balanced diet beats grazing the whole buffet: one breadth source, one depth source, one strategy source. Done.",
+            example:
+              "A sustainable weekly hour: 5-minute newsletter skim daily, one podcast episode, one deep read on the weekend. Sustainable beats heroic.",
+            pm: "When someone asks how you keep up, name your actual sources and cadence. Specificity IS the credibility.",
+          },
+          {
+            title: "Learn with your hands",
+            emoji: "🤲",
+            hook: "Reading alone doesn't stick — the habit that compounds is testing. Keep 5–10 personal test prompts (drawn from your real work) and run every major new model through them within days of release. Build tiny things: a bot with a personality, a RAG over your own notes, a small automation. Direct experience produces the opinions no newsletter can give you.",
+            analogy:
+              "Test-driving cars vs. reading car reviews. Ten minutes behind the wheel reveals what no review can.",
+            example:
+              "Keep one note: the same 5 prompts, run on each new model, with your verdicts. Six months later you own a private eval set and genuinely informed opinions.",
+            pm: "'I keep a personal eval set' is one sentence that instantly separates practitioners from spectators.",
+          },
+          {
+            title: "Filter signal from hype",
+            emoji: "🧹",
+            hook: "Four sniff tests. (1) Benchmarks vs. reality — public benchmarks leak into training data and get gamed; trust hands-on evals more. (2) Demos vs. products — cherry-picked demos hide failure rates; always ask 'what's the eval?' (3) Capability vs. adoption — a model CAN do something ≠ users will adopt it (trust, cost, and workflow gaps in between). (4) Revealed preferences — watch what serious builders actually ship with, not what they retweet.",
+            analogy:
+              "Movie trailer, critic review, box office: hype, evidence, and adoption are three different data sources. Never confuse the trailer for the box office.",
+            example:
+              "'Model X beats humans on benchmark Y' usually means a narrow test set — check for training-data contamination and real-world evals before repeating the claim in a meeting.",
+            pm: "The right stance is excited AND skeptical: 'Impressive demo — what's the failure rate, the cost, and the eval?' is always the correct follow-up.",
+          },
+        ],
+        quiz: [
+          {
+            q: "Highest-signal source the week a new model launches?",
+            choices: [
+              "Viral social media threads",
+              "The lab's own model/system card: capabilities, costs, and admitted weaknesses",
+              "YouTube reaction videos",
+            ],
+            answer: 1,
+            explain:
+              "Model cards are the primary source: benchmarks, pricing, and known failure modes straight from the people who built it.",
+          },
+          {
+            q: "The habit that builds genuinely informed model opinions?",
+            choices: [
+              "Keeping a personal set of test prompts and running every new model through them",
+              "Subscribing to more newsletters",
+              "Memorizing leaderboard rankings",
+            ],
+            answer: 0,
+            explain:
+              "A private eval set turns releases into evidence. Direct experience beats secondhand takes every time.",
+          },
+          {
+            q: "Why treat public benchmark headlines with skepticism?",
+            choices: [
+              "Benchmarks can leak into training data and get gamed — hands-on evals beat headlines",
+              "Benchmarks are illegal to publish",
+              "Models can't be measured at all",
+            ],
+            answer: 0,
+            explain:
+              "Contaminated or gamed benchmarks inflate scores. Ask for real-world evals and failure rates before repeating claims.",
+          },
+        ],
+      },
     ],
   },
 ];
