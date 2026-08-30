@@ -227,9 +227,8 @@ function Learn({
   progress: Progress;
   onStart: (id: string) => void;
 }) {
-  // Lessons unlock in order — the first incomplete lesson is the frontier.
+  // Every lesson is open; the first incomplete one gets a "NEXT UP" marker.
   const frontier = nextLesson(progress)?.lesson.id;
-  let unlocked = true;
 
   return (
     <div className="stack">
@@ -247,31 +246,27 @@ function Learn({
             {unit.lessons.map((lesson) => {
               const isDone = progress.completed.includes(lesson.id);
               const isFrontier = lesson.id === frontier;
-              const canOpen = isDone || isFrontier;
-              if (!isDone && !isFrontier) unlocked = false;
               const score = progress.scores[lesson.id];
               return (
                 <button
                   key={lesson.id}
-                  className={`lesson-node card ${isDone ? "done" : ""} ${isFrontier ? "frontier" : ""} ${!canOpen ? "locked" : ""}`}
-                  disabled={!canOpen}
+                  className={`lesson-node card ${isDone ? "done" : ""} ${isFrontier ? "frontier" : ""}`}
                   onClick={() => onStart(lesson.id)}
                 >
-                  <span className="lesson-emoji">{canOpen ? lesson.emoji : "🔒"}</span>
+                  <span className="lesson-emoji">{lesson.emoji}</span>
                   <span className="lesson-name">{lesson.title}</span>
                   {isDone && (
                     <span className="lesson-score">
                       {score !== undefined ? `${score}%` : "✓"}
                     </span>
                   )}
-                  {isFrontier && <span className="lesson-go">START</span>}
+                  {isFrontier && <span className="lesson-go">NEXT UP</span>}
                 </button>
               );
             })}
           </div>
         </section>
       ))}
-      {unlocked && <p className="muted center">You've unlocked everything. 🎓</p>}
     </div>
   );
 }
