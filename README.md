@@ -41,14 +41,16 @@ Then the game loop keeps you coming back:
 
 ## The curriculum
 
-**6 units · 27 lessons · 108 concept cards · 81 quiz questions**
+**8 units · 38 lessons · 154 concept cards · 114 quiz questions**
 
 1. 🧠 **LLM Basics** — what an LLM actually is, tokens, training vs. inference, context windows, hallucinations
 2. 🏋️ **How Models Get Smart** — pretraining, RLHF, alignment, picking the right model, multimodal & reasoning models
-3. 🛠️ **AI Engineering Toolkit** — prompt engineering, RAG, evals, cost/latency/quality trade-offs
-4. 🤖 **Agents & Agentic AI** — the agent loop, tool use, MCP, guardrails & trust
-5. 🚀 **Building AI Products** — anatomy of an AI product, building a bot for real, AI metrics, safety
-6. 🏆 **The AI PM Playbook** — talking like an AI PM, the industry landscape, product sense, ML fundamentals (NN vs. LLM, classic ML, rules-vs-ML-vs-LLM), model selection criteria, prompt evaluation, RAG internals, RLHF vs. DPO, and staying current
+3. 🗺️ **Karpathy's Map** — Software 1.0/2.0/3.0, the data engine, English as code, attention (Q/K/V), why transformers won
+4. 🛠️ **AI Engineering Toolkit** — prompt engineering, RAG, evals, cost/latency/quality trade-offs
+5. 🤖 **Agents & Agentic AI** — the agent loop, tool use, MCP, guardrails & trust
+6. 🔬 **Agents, Deep Dive** — five definitions, chatbot vs workflow vs agent, anatomy (model/tools/harness/environment), tools for real, memory and loops, when to build one
+7. 🚀 **Building AI Products** — anatomy of an AI product, building a bot for real, AI metrics, safety
+8. 🏆 **The AI PM Playbook** — talking like an AI PM, the industry landscape, product sense, ML fundamentals, model selection, evals, RLHF vs DPO, staying current
 
 ## Run it locally
 

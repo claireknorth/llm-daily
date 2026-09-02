@@ -698,7 +698,7 @@ export const units13: Unit[] = [
           {
             title: "Few-shot: show, don't tell",
             emoji: "🎬",
-            hook: "Including 2–3 examples of ideal input → output in your prompt massively improves consistency. The model imitates the pattern.",
+            hook: "Including 2–3 examples of ideal input → output in your prompt massively improves consistency. The GPT-3 paper showed this as in-context learning: the model picks up the pattern from the prompt WITHOUT changing its saved weights.",
             analogy:
               "Training a new barista: instead of describing latte art, you make three and say 'like this.'",
             example:
@@ -708,12 +708,12 @@ export const units13: Unit[] = [
           {
             title: "Chain of thought",
             emoji: "🪜",
-            hook: "Asking the model to 'think step by step' before answering improves accuracy on hard problems — it works out the answer instead of blurting one.",
+            hook: "Asking the model to 'think step by step' before answering improves accuracy on hard problems. Karpathy's reason: the model cannot do a lot of thinking on any ONE token. Extra tokens = extra time to work. On a GSM8K-style math set, a naive prompt sat at 17%; 'let's think step by step' jumped to ~79%; adding 'to be sure we have the right answer' hit ~82%.",
             analogy:
-              "Math class rule: show your work. Students who show work make fewer mistakes.",
+              "Math class rule: show your work. Students who show work make fewer mistakes — they get more paper, not a bigger brain in one second.",
             example:
-              "'First list the customer's issues, then decide severity, THEN draft the reply' beats 'draft a reply.'",
-            pm: "This idea grew into reasoning models. Knowing prompting history helps you talk model strategy fluently.",
+              "Juggler puzzle: 16 balls, half golf balls, half of those blue. A blunt prompt answers 8 (wrong). Step-by-step: 16 → 8 golf → 4 blue.",
+            pm: "This idea grew into reasoning models that spend tokens on a hidden scratchpad. Prompting history is model-strategy fluency.",
           },
           {
             title: "Iterate like a scientist",
@@ -747,7 +747,7 @@ export const units13: Unit[] = [
             ],
             answer: 1,
             explain:
-              "Chain-of-thought prompting = show your work. Fewer mistakes on multi-step problems.",
+              "Chain-of-thought = more tokens to work. Karpathy: the model can't think very hard per token, so you give it a trail of tokens.",
           },
           {
             q: "How do serious teams improve prompts?",

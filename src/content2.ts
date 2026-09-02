@@ -128,6 +128,16 @@ export const units46: Unit[] = [
             pm: "Long-term this threatens the idea that every app needs its own integration. Great 'where is this going?' talking point.",
           },
           {
+            title: "Give it a notepad",
+            emoji: "📝",
+            hook: "Karpathy's other memory trick: the context window is like working memory — small and expensive. You can teach the model to use a scratchpad: write notes out (or into a tool), then read them later. That's the same idea as a human grabbing a notebook, and it's the seed of tools and agents.",
+            analogy:
+              "You don't keep a grocery list only in your head. You jot it down, then look at the list in the store.",
+            example:
+              "A research agent writes findings into a doc, then attends to that doc on the next step instead of trying to remember 40 pages in one prompt.",
+            pm: "When context is the bottleneck, don't just buy a bigger window — give the model a place to write. RAG, files, and tool calls are all notepads.",
+          },
+          {
             title: "Multi-agent teams",
             emoji: "👥",
             hook: "Complex jobs get split across multiple agents: a planner delegates to researcher, writer, and reviewer agents. Like an org chart made of AIs.",
@@ -299,7 +309,7 @@ export const units46: Unit[] = [
               "You didn't trust a new babysitter with a full weekend on day one. Trust grows through small verified wins.",
             example:
               "Products show live agent activity ('Searching... Found 3 options... Booking...') so users feel in control.",
-            pm: "A beautiful way to frame any agent roadmap: 'It's a trust ladder — each rung unlocks more delegation.'",
+            pm: "A beautiful way to frame any agent roadmap: 'It's a trust ladder — each rung unlocks more delegation.' Next: the Agents, Deep Dive unit unpacks every definition, the anatomy, and when not to build one.",
           },
         ],
         quiz: [
@@ -1027,7 +1037,7 @@ export const units46: Unit[] = [
               "Vehicle vs. cruise ship. An LLM is a neural network the way a cruise ship is a vehicle — same family, radically different scale and specialization.",
             example:
               "Spotify's recommendation network has millions of parameters and outputs a ranking score. A frontier LLM has hundreds of billions of parameters and outputs language, code, and reasoning.",
-            pm: "The transformer's key trick is 'attention': for every new token, the model weighs which earlier words matter most. Attention + massive scale is what unlocked modern generative AI.",
+            pm: "The transformer's key trick is attention: tokens pass messages (query/key/value) so each word can pull in the others that matter. That's why one architecture now runs language, vision, and speech. Full tour is in the Karpathy's Map unit.",
           },
           {
             title: "Classic ML: old but gold",
